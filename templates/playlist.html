@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/playlist.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{userimage}}">
+    <title>Spotify Couples App</title>
+</head>
+
+<body>
+        <p>{{name}} and {{friendName}}'s Playlist: </p>
+        <table class = playlistTable>
+            <tr>
+                <th>Track</th>
+                <th>Artist</th>
+                <th>Playlist</th>
+                <th>Playlist Creator</th>
+            </tr>
+        {% for trackName in randomTrack %}
+        <tr>
+        <td>{{ trackName[0]  }} </td>
+        <td>{{ trackName[1]  }} </td>
+        <td>{{ trackName[3]  }} </td>
+        <td>{{ trackName[4]  }} </td>
+        <td><img src="{{ trackName[5]  }}" alt="image" style="width:40px;height:40px;"></td>
+        </tr>
+        {% endfor %}
+        </table>
+
+
+        <form action = "/createplaylist" method = "POST">
+            <input type="hidden" id="friendName" name="friendName" value = "{{friendName}}">
+            <input type="hidden" id="username" name="username" value = {{name}}>
+            <input type="hidden" id="idArray" name="idArray" value = "{{idArray}}">
+            <p>Create This Playlist on Your Spotify Profile:</p>
+            <input type = "submit" value = "Create Playlist">
+            </form>
+
+        <form action = "/playlist" method = "POST">
+        <input type="hidden" id="friendName" name="friendName" value = "{{friendname}}">
+        <p>Or generate a new tracklist with {{friendName}}:</p>
+        <input type = "submit" value = "Generate New Tracklist">
+        </form>
+        <br><br>
+        <form action = "/playlist" method = "POST">
+            Or create a new playlist with another friend's profile: <br> <input type="text" id="friendName" name="friendName"><br>
+        <input type = "submit" value = "Submit" />
+
+</body>
+
+</html>
