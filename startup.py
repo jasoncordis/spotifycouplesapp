@@ -2,6 +2,7 @@ import requests
 import json
 from flask_spotify_auth import getAuth, refreshAuth, getToken
 import random
+import os
 
 #Add your client ID
 CLIENT_ID = os.getenv('CLIENTID', 'Optional default value')
